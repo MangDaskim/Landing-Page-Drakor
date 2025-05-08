@@ -89,9 +89,12 @@
     lucide.createIcons();
   </script>  
 
+<!-- Slick Carousel CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
 <!-- Galeri Style Website -->
 <section class="bg-gray-100 py-12">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 max-w-md">
     <h2 class="text-2xl font-bold text-center mb-4">Tampilan Website</h2>
 
     <!-- Tombol Demo -->
@@ -101,23 +104,23 @@
       </a>
     </div>
 
-    <!-- Slick Slider -->
-    <div class="website-slider">
+    <!-- Slick Slider Vertikal -->
+    <div class="website-slider-vertical">
       <!-- Style 1 -->
       <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden">
-        <img src="img/Screenshot_2025-05-08-23-43-05-102_com.jpg" alt="Style 1" class="w-full h-56 object-cover">
+        <img src="/style1.jpg" alt="Style 1" class="w-full h-56 object-cover">
         <div class="p-4 text-center font-medium">Style 1 - Dark Modern</div>
       </div>
 
       <!-- Style 2 -->
       <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden">
-        <img src="img/Screenshot_2025-05-08-23-43-05-102_com.jpg" alt="Style 2" class="w-full h-56 object-cover">
+        <img src="/style2.jpg" alt="Style 2" class="w-full h-56 object-cover">
         <div class="p-4 text-center font-medium">Style 2 - Clean Minimal</div>
       </div>
 
       <!-- Style 3 -->
       <div class="bg-white rounded-xl shadow hover:shadow-lg overflow-hidden">
-        <img src="img/Screenshot_2025-05-08-23-43-05-102_com.jpg" alt="Style 3" class="w-full h-56 object-cover">
+        <img src="/style3.jpg" alt="Style 3" class="w-full h-56 object-cover">
         <div class="p-4 text-center font-medium">Style 3 - Neon Dark</div>
       </div>
     </div>
@@ -125,18 +128,20 @@
 </section>
 
 <!-- Slick Carousel JS -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-<!-- Slick Init Script -->
+<!-- Init Slick Vertical -->
 <script>
   $(document).ready(function(){
-    $('.website-slider').slick({
-      dots: true,
-      infinite: true,
-      speed: 500,
+    $('.website-slider-vertical').slick({
+      vertical: true,
+      verticalSwiping: true,
       slidesToShow: 1,
-      adaptiveHeight: true,
+      slidesToScroll: 1,
+      dots: true,
+      arrows: false,
+      infinite: true,
       autoplay: true,
       autoplaySpeed: 3000
     });
