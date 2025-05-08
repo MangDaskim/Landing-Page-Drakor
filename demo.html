@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Tampilan Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #demoFrame {
+      height: calc(100vh - 60px); /* Menyesuaikan tinggi header */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+<!-- Header -->
+<header class="bg-white shadow fixed top-0 left-0 right-0 z-50 h-[60px] flex items-center">
+    <div class="max-w-6xl mx-auto px-4 w-full flex items-center justify-between">
+      <!-- Tombol Kembali -->
+      <a href="/" class="flex items-center text-gray-800 hover:text-blue-600 transition">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+        <span class="ml-1 text-sm font-semibold">Kembali</span>
+      </a>
+  
+      <!-- Judul Tengah -->
+      <h1 class="text-sm sm:text-base font-bold text-center w-full absolute left-0 right-0 pointer-events-none">Demo Tampilan Website</h1>
+  
+      <!-- Tombol Expand -->
+      <button id="expandBtn" class="text-gray-700 hover:text-blue-600 transition">
+        <i data-lucide="maximize-2" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>  
+
+  <!-- Iframe Full Height -->
+  <main class="pt-[60px]">
+    <iframe id="demoFrame" src="" class="w-full border-none" allowfullscreen></iframe>
+  </main>
+
+  <!-- Pesan error -->
+  <div id="error" class="hidden absolute inset-0 flex items-center justify-center text-red-500 bg-white text-lg font-semibold">
+    ❌ Link demo tidak valid atau tidak ditemukan.
+  </div>
+
+  <script>
+    lucide.createIcons();
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get('url');
+    const iframe = document.getElementById('demoFrame');
+    const error = document.getElementById('error');
+
+    if (url && url.startsWith('http')) {
+      iframe.src = url;
+    } else {
+      iframe.style.display = 'none';
+      error.classList.remove('hidden');
+    }
+
+    // Tombol expand
+document.getElementById('expandBtn').addEventListener('click', () => {
+  const iframe = document.getElementById('demoFrame');
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+});
+  </script>
+
+</body>
+</html>
